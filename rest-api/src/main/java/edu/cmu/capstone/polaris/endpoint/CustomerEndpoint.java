@@ -40,7 +40,7 @@ public class CustomerEndpoint {
 	public static String PARAM_INFO_EMAIL = "email";
 	public static String PARAM_INFO_ADDRESS = "address";
 	public static String PARAM_INFO_ALL = "all";
-	public static String PARAM_SORT_ACK = "ack_rank";
+	public static String PARAM_SORT_ACS = "acs_rank";
 	public static String PARAM_SORT_DESC = "desc_rank";
 
 	/**
@@ -141,9 +141,9 @@ public class CustomerEndpoint {
 																												 * ""
 																												 */)
 	@Produces(MediaType.APPLICATION_JSON)
-	public GeneralInfoSearchResponse searchBy(
+	public String searchBy(
 			@ApiParam(value = "specific search requirement", required = true) @QueryParam("search") String searchString,
-			@ApiParam(value = "sorting ascending or descending", required = false) @QueryParam("sort")  String order,
+			@ApiParam(value = "sorting ascending or descending", required = false) @QueryParam("sort") String order,
 			@ApiParam(value = "pagination offset", required = false) @QueryParam("offset") @DefaultValue("0") int offest,
 			@ApiParam(value = "pagination limit", required = false) @QueryParam("limit") @DefaultValue("10") int limit) {
 		return null;
@@ -260,7 +260,7 @@ public class CustomerEndpoint {
 
 		CMUCustomerSearchRequest request = new CMUCustomerSearchRequest();
 		String[] names = PolarisAPIParser.getParser()
-				.parserCustomerSearchFullnameParameter(searchString);
+				.parseCustomerSearchFullnameParameter(searchString);
 		request.setFirstName(names[0]);
 		request.setLastName(names[1]);
 		request.setLimit(limit);

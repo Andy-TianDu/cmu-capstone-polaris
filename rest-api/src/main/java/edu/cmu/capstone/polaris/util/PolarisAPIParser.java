@@ -66,7 +66,7 @@ public class PolarisAPIParser implements Parser {
 		SortCondition sortCondition = new SortCondition();
 		
 		//check if the sorting type matches asc_rank or desc_rank
-		if(tokens[1].equalsIgnoreCase(CustomerEndpoint.PARAM_SORT_ACK)){
+		if(tokens[1].equalsIgnoreCase(CustomerEndpoint.PARAM_SORT_ACS)){
 			sortCondition.setOrder(SortType.ASC);
 		}
 		else if(tokens[1].equalsIgnoreCase(CustomerEndpoint.PARAM_SORT_DESC)){
@@ -81,7 +81,7 @@ public class PolarisAPIParser implements Parser {
 	}
 	
 	@Override
-	public String[] parserCustomerSearchFullnameParameter(String paramFullname)throws SearchResultNotFoundException {
+	public String[] parseCustomerSearchFullnameParameter(String paramFullname)throws SearchResultNotFoundException {
 		String[] tokens = paramFullname.split(" ");
 		if(tokens.length != 2){
 			throw new SearchResultNotFoundException(paramFullname+": fullname unparsable.");
@@ -97,9 +97,9 @@ public class PolarisAPIParser implements Parser {
 	// String output = test.parseInquiryParameter(input);
 	// assertEquals(address[0], test.parseInquiryParameter(input)[1]);
 	// }
-	public static void main(String[] args){
-		System.out.println(new PolarisAPIParser().parseCustomerInquiryParameter("none")[0]);
-	}
+//	public static void main(String[] args){
+//		System.out.println(new PolarisAPIParser().parseCustomerInquiryParameter("none")[0]);
+//	}
 
 
 }

@@ -28,5 +28,5 @@ public interface Parser {
 	 * @param paramFullname - the fullname url parameter from endpoint.
 	 * @return a string array with firstname as the first element, and last name as the second element.
 	 */
-	public String[] parserCustomerSearchFullnameParameter(String paramFullname);
+	public String[] parseCustomerSearchFullnameParameter(String paramFullname);
 }
