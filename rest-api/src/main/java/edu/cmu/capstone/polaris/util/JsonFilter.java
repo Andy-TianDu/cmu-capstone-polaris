@@ -13,5 +13,7 @@ public interface JsonFilter {
 	 * @param customerInquiryResponse - inquiry response
 	 * @return - the JSON string that only carries neccessary information
 	 */
-	public String customerInquiryResponseToJSON(CustomerInquiryResponse customerInquiryResponse, String[] requiredField);
+	public String customerInquiryResponseToJSON(CustomerInquiryResponse customerInquiryResponse, String[] requiredFields);
+	
+
 }

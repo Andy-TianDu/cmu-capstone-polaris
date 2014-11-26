@@ -17,16 +17,16 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
-import edu.cmu.capstone.polaris.entity.Address;
+import edu.cmu.capstone.polaris.entity.CMUCustomerCreateResponse;
+import edu.cmu.capstone.polaris.entity.CMUCustomerUpdateResponse;
 import edu.cmu.capstone.polaris.entity.GeneralInfoCreateResponse;
-import edu.cmu.capstone.polaris.entity.GeneralInfoInquiryResponse;
 import edu.cmu.capstone.polaris.entity.GeneralInfoSearchResponse;
-import edu.cmu.capstone.polaris.entity.GeneralInfoUpdateResponse;
-import edu.cmu.capstone.polaris.entity.Phone;
 import edu.cmu.capstone.polaris.factory.CMUResponseFactory;
 import edu.cmu.capstone.polaris.factory.CustomerSearchShortcutType;
+import edu.cmu.capstone.polaris.request.CMUCustomerCreateRequest;
 import edu.cmu.capstone.polaris.request.CMUCustomerInquiryRequest;
 import edu.cmu.capstone.polaris.request.CMUCustomerSearchRequest;
+import edu.cmu.capstone.polaris.request.CMUCustomerUpdateRequest;
 import edu.cmu.capstone.polaris.util.PolarisAPIJsonFilter;
 import edu.cmu.capstone.polaris.util.PolarisAPIParser;
 
@@ -105,41 +105,32 @@ public class CustomerEndpoint {
 
 	@PUT
 	@Path("/{id}")
-	// @ApiOperation(value = "Update information for this customer", notes =
-	// "update information for a customer", response =
-	// GeneralInfoUpdateResponse.class, responseContainer = "")
-	@ApiOperation(value = "Update information for a customer", notes = "update information for a customer (To be implemented)")
+	@ApiOperation(value = "Update information for a customer", notes = "update information for a customer."
+			+ " To do that, you need to pass a JSON message with the fields you want to update."
+			+ "If you need to update contact information, you have to include the key of the contact information attribute.")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public GeneralInfoUpdateResponse updateAll(@PathParam("id") String id) {
-
-		return null;
+	public CMUCustomerUpdateResponse update(
+			@ApiParam(value = "ID of the customer to update", required = true) @PathParam("id") String id,
+			CMUCustomerUpdateRequest request) {
+		request.setPartyId(id);
+		CMUCustomerUpdateResponse response = CMUResponseFactory.getInstance()
+				.getCustomerUpdateResponse(request);
+		return response;
 	}
 
 	@POST
-	// @ApiOperation(value = "Create a new customer", notes =
-	// "Create a new customer using the information in the JSON message(To be implemented)",
-	// response = GeneralInfoCreateResponse.class, responseContainer = "")
-	@ApiOperation(value = "Create a new customer", notes = "Create a new customer using the information in the JSON message (To be implemented)")
+	@ApiOperation(value = "Create a new customer", notes = "Create a new customer using the information in the JSON message")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public GeneralInfoCreateResponse create() {
-		return null;
+	public CMUCustomerCreateResponse create(CMUCustomerCreateRequest request) {
+		CMUCustomerCreateResponse response = CMUResponseFactory.getInstance()
+				.getCustomerCreateResponse(request);
+		return response;
 	}
 
 	@GET
-	@ApiOperation(value = "search customer", notes = "Search - search customer information (To be implemented)" /*
-																												 * ,
-																												 * response
-																												 * =
-																												 * GeneralInfoSearchResponse
-																												 * .
-																												 * class
-																												 * ,
-																												 * responseContainer
-																												 * =
-																												 * ""
-																												 */)
+	@ApiOperation(value = "search customer", notes = "Search - search customer information (To be implemented)")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String searchBy(
 			@ApiParam(value = "specific search requirement", required = true) @QueryParam("search") String searchString,

@@ -5,8 +5,12 @@ import com.seec.insurance.plm.customerinquiry.model.CustomerInquiryResponse;
 import com.seec.insurance.plm.customersearch.dataaccess.CustomerSearchDA;
 import com.seec.insurance.plm.customersearch.model.CustomerSearchResponse;
 
+import edu.cmu.capstone.polaris.entity.CMUCustomerCreateResponse;
+import edu.cmu.capstone.polaris.entity.CMUCustomerUpdateResponse;
+import edu.cmu.capstone.polaris.request.CMUCustomerCreateRequest;
 import edu.cmu.capstone.polaris.request.CMUCustomerInquiryRequest;
 import edu.cmu.capstone.polaris.request.CMUCustomerSearchRequest;
+import edu.cmu.capstone.polaris.request.CMUCustomerUpdateRequest;
 
 /**
  * CMU's Implementation of ResponseFactory class.
@@ -65,6 +69,25 @@ public class CMUResponseFactory implements ResponseFactory{
 			break;
 		}
 		return null;
+	}
+
+	@Override
+	public CMUCustomerUpdateResponse getCustomerUpdateResponse(
+			CMUCustomerUpdateRequest request) {
+		// TODO Auto-generated method stub
+		// 1. get key and not-null attributes to update;
+		// 2. find if the request contains the contact key
+		// to determine if to the request also updates the contact information.
+		return new CMUCustomerUpdateResponse();
+	}
+
+	@Override
+	public CMUCustomerCreateResponse getCustomerCreateResponse(
+			CMUCustomerCreateRequest request) {
+		// TODO Auto-generated method stub
+		// determine if the information is duplicated
+		// create the data item accordingly, or reject the operation.
+		return new CMUCustomerCreateResponse();
 	}
 
 }
