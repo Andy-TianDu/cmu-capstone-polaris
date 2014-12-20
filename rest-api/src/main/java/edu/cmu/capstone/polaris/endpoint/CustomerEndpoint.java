@@ -40,7 +40,7 @@ public class CustomerEndpoint {
 	public static String PARAM_INFO_EMAIL = "email";
 	public static String PARAM_INFO_ADDRESS = "address";
 	public static String PARAM_INFO_ALL = "all";
-	public static String PARAM_SORT_ACS = "acs_rank";
+	public static String PARAM_SORT_ACS = "asc_rank";
 	public static String PARAM_SORT_DESC = "desc_rank";
 
 	/**

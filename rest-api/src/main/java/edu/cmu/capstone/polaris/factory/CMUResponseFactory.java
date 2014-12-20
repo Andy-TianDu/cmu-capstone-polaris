@@ -62,7 +62,7 @@ public class CMUResponseFactory implements ResponseFactory{
 			case FIRSTNAME:
 				return searchDA.searchCustomerbyFirstAndLastName(request.getFirstName(), null);
 			case LASTNAME:
-				return searchDA.searchCustomerbyFieldName("lastname", request.lastName);
+				return searchDA.searchCustomerbyFieldName("lastname", request.getLastName());
 			case FULLNAME:
 				return searchDA.searchCustomerbyFirstAndLastName(request.getFirstName(), request.getLastName());
 		default:

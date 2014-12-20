@@ -6,7 +6,7 @@ import com.seec.insurance.common.model.ResponseMessage;
 
 public class CustomerSearchResponse extends ResponseMessage{
 	
-	List<CustomerSearchResult> searchList = null;
+	private List<CustomerSearchResult> searchList = null;
 	
 	/**
 	 * @return the searchList

@@ -2,12 +2,12 @@ package com.seec.insurance.plm.customersearch.model;
 
 public class CustomerSearchResult {
 
-	String partyKey;
-	String fullname;
-	String leadStage;
-	String primaryAddress;
-	String primaryPhone;
-	String ssn;
+	private String partyKey;
+	private String fullname;
+	private String leadStage;
+	private String primaryAddress;
+	private String primaryPhone;
+	private String ssn;
 	
 	/**
 	 * @return the partyKey

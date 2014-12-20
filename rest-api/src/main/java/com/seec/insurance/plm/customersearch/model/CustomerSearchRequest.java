@@ -2,14 +2,14 @@ package com.seec.insurance.plm.customersearch.model;
 
 public class CustomerSearchRequest {
 
-	public String firstName;
-	public String lastName;
-	public String ssn;
-	public String phone;
-	public String email;
-	public String zip;
-	public String city;
-	public String agentId;
+	private String firstName;
+	private String lastName;
+	private String ssn;
+	private String phone;
+	private String email;
+	private String zip;
+	private String city;
+	private String agentId;
 	
 	/**
 	 * @return the firstName
